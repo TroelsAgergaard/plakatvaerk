@@ -1,4 +1,4 @@
-import { jsx, useState } from "react";
+import { useState } from "react";
 import { Link } from "@reach/router";
 import Navitem from "./Navitem";
 import { BiCrop, BiImageAdd, BiText, BiCreditCard } from "react-icons/bi";

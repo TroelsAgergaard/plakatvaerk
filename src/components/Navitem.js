@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { css, jsx, useTheme } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 
 const Navitem = ({ children, altText, showIconAlt, setShowIconAlt }) => {
   const themeColors = useTheme();
