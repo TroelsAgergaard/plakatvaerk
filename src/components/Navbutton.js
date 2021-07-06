@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
 
 const Navbutton = ({ color, children }) => {
-  const themeColor = useTheme();
+  // const themeColor = useTheme();
 
   const styles = css`
     padding: 8px 10px;
