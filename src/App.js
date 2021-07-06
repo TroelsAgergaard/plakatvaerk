@@ -1,28 +1,22 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from "react";
-import { css, jsx, Global, ThemeProvider } from "@emotion/react";
-
+import { css, Global, ThemeProvider } from "@emotion/react";
+import { Router, Link } from "@reach/router";
 import "./App.css";
 import resetCss from "./resetCss";
-
-import Navitem from "./components/Navitem";
 import Navbutton from "./components/Navbutton";
-
+import Nav from "./components/Nav";
+import Title from "./components/Title";
+import Welcome from "./components/Welcome";
 import { IconContext } from "react-icons";
-import {
-  BiCrop,
-  BiImageAdd,
-  BiText,
-  BiCreditCard,
-  BiX,
-  BiCheck,
-} from "react-icons/bi";
+import { BiX, BiCheck } from "react-icons/bi";
 
 const themeColors = {
   colors: {
     primary: "#b8bfc2",
     active: "#00a3d2",
     heading: "#123750",
+    alert: "#ef006b",
+    succes: "#00ef81",
   },
 };
 
@@ -32,42 +26,44 @@ const styles = css`
     font-size: 1.8rem;
     vertical-align: sub;
   }
-  .main {
+  &.main {
+    display: flex;
+    flex-grow: 1;
+    padding: 25px 0;
+  }
+  .flex-container {
+    flex-grow: 1;
+    display: flex;
   }
 `;
 
 function App() {
-  let [iconAlt, setIconAlt] = useState(true);
-
   return (
     <IconContext.Provider value={{ style: { fontSize: "1.5rem" } }}>
       <ThemeProvider theme={themeColors}>
         <Global styles={resetCss} />
-        <header className="flexContainer">
-          <Navbutton>
-            <BiX />
-          </Navbutton>
-          <h1 className="heading">Plakatværk</h1>
-          <Navbutton>
+        <header css={styles} className="flexContainer">
+          <Link to="/">
+            <Navbutton color={themeColors.colors.alert}>
+              <BiX />
+            </Navbutton>
+          </Link>
+          <Router>
+            <Title path="/" title="plakatværk" className="heading" />
+            <Title path="view/:param" />
+          </Router>
+          <Navbutton color={themeColors.colors.succes}>
             <BiCheck />
           </Navbutton>
         </header>
-        <main className="main"></main>
-        <footer>
-          <nav className="flexContainer">
-            <Navitem altText="Start" iconAlt={iconAlt} setIconAlt={setIconAlt}>
-              <BiImageAdd />
-            </Navitem>
-            <Navitem altText="Juster" iconAlt={iconAlt} setIconAlt={setIconAlt}>
-              <BiCrop />
-            </Navitem>
-            <Navitem altText="Tekst" iconAlt={iconAlt} setIconAlt={setIconAlt}>
-              <BiText />
-            </Navitem>
-            <Navitem altText="Bestil" iconAlt={iconAlt} setIconAlt={setIconAlt}>
-              <BiCreditCard />
-            </Navitem>
-          </nav>
+        {/* <main css={styles} className="main"> */}
+        <main css={styles} className="main">
+          <Router className="flex-container">
+            <Welcome path="/" />
+          </Router>
+        </main>
+        <footer css={styles}>
+          <Nav />
         </footer>
       </ThemeProvider>
     </IconContext.Provider>

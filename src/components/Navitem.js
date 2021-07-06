@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx, useTheme } from "@emotion/react";
 
-const Navitem = ({ children, altText, iconAlt, setIconAlt }) => {
+const Navitem = ({ children, altText, showIconAlt, setShowIconAlt }) => {
   const themeColors = useTheme();
 
   const styles = css`
@@ -18,13 +18,13 @@ const Navitem = ({ children, altText, iconAlt, setIconAlt }) => {
   `;
 
   let handleClick = () => {
-    setIconAlt(false);
+    setShowIconAlt(false);
   };
 
   return (
     <figure onClick={handleClick} css={styles}>
       {children}
-      <figcaption className="fig">{iconAlt && altText}</figcaption>
+      <figcaption className="fig">{showIconAlt && altText}</figcaption>
     </figure>
   );
 };

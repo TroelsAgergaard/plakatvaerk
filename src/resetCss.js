@@ -14,6 +14,7 @@ const resetCss = css`
 
   body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: "Roboto", sans-serif;
@@ -24,6 +25,10 @@ const resetCss = css`
       rgba(239, 241, 243, 1) 100%
     );
     height: 100vh;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 
